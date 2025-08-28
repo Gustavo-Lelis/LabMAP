@@ -1,7 +1,6 @@
-package br.com.gus.model;
+package br.com.gus.entidades;
 
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Horario {
     private String diaSemana;
@@ -28,7 +27,6 @@ public class Horario {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return diaSemana + " " + horaInicio.format(formatter) + " - " + horaFim.format(formatter);
+        return diaSemana + " " + horaInicio + " - " + horaFim;
     }
 }

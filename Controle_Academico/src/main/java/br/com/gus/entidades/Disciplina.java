@@ -1,21 +1,21 @@
-package br.com.gus.model;
+package br.com.gus.entidades;
 
-public class User {
+public class Disciplina {
     private String id;
     private String nome;
+    
 
-
-    public User(String id, String nome) {
+    public Disciplina(String id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public String getCodigo() {
+    public String getId() {
         return id;
     }
 
-    public void setCodigo(String codigo) {
-        this.id = codigo;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -25,4 +25,5 @@ public class User {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }

@@ -1,11 +1,8 @@
-package br.com.gus.model;
-
-import java.util.ArrayList;
-import java.util.List;
+package br.com.gus.entidades;
 
 public class Professor extends User {
     private String email;
-    private List<Disciplina> disciplinas = new ArrayList<>();
+    
 
 
     public Professor(String id, String nome, String email) {
@@ -22,13 +19,7 @@ public class Professor extends User {
         this.email = email;
     }
 
-    public void adicionarDisciplina(Disciplina disciplina) {
-        disciplinas.add(disciplina);
-    }
-
-    public List<Disciplina> getDisciplinas() {
-        return disciplinas;
-    }
+   
 
 
 }
