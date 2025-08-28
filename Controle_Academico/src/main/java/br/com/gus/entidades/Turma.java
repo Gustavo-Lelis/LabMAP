@@ -32,12 +32,13 @@ public class Turma {
         return alunos;
     }
 
-    public void addAluno(Aluno aluno){
-        if(!alunos.contains(aluno)){
-            alunos.add(aluno);
-        }
-        throw new IllegalArgumentException();
+   public void addAluno(Aluno aluno) {
+    if (alunos.contains(aluno)) {
+        throw new IllegalArgumentException("Aluno já está na turma");
     }
+    alunos.add(aluno);
+}
+
 
     public List<Aluno> listaAlunos(){
         return alunos; 
