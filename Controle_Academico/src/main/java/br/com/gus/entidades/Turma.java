@@ -7,13 +7,13 @@ public class Turma {
     private Disciplina disciplina;
     private Professor professor;
     private Horario horario;
-    private List<Aluno> alunos;
+    private List<Aluno> matriculados;
 
     public Turma (Disciplina disciplina, Professor professor, Horario horario){
         this.disciplina = disciplina;
         this.professor = professor;
         this.horario = horario;
-        alunos = new ArrayList<Aluno>();
+        matriculados = new ArrayList<Aluno>();
     }
 
     public Disciplina getDisciplina() {
@@ -29,22 +29,15 @@ public class Turma {
     }
 
     public List<Aluno> getAlunos() {
-        return alunos;
+        return matriculados;
     }
 
-   public void addAluno(Aluno aluno) {
-    if (alunos.contains(aluno)) {
-        throw new IllegalArgumentException("Aluno já está na turma");
+    public void matricularAluno(Aluno aluno) {
+        if (aluno != null && !matriculados.contains(aluno)) {
+            matriculados.add(aluno);
+        }
     }
-    alunos.add(aluno);
-}
-
-
-    public List<Aluno> listaAlunos(){
-        return alunos; 
-    }
-
     public int numeroAlunos(){
-        return alunos.size();
+        return matriculados.size();
     }
 }

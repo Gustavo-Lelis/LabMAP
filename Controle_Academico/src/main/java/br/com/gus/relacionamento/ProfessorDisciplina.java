@@ -1,18 +1,22 @@
 package br.com.gus.relacionamento;
 
 import br.com.gus.entidades.Professor;
-import br.com.gus.entidades.Disciplina;
-
+import br.com.gus.entidades.Turma;
 
 public class ProfessorDisciplina {
 
     private Professor professor;
-    private Disciplina disciplina;
+    private Turma turma;
+    
 
     
-    public ProfessorDisciplina(Professor professor, Disciplina disciplina) {
+    public ProfessorDisciplina(Professor professor, Turma turma) {
+        if (professor == null || turma == null) {
+            throw new IllegalArgumentException("Professor e Turma não podem ser nulos");
+        }
+
         this.professor = professor;
-        this.disciplina = disciplina;
+        this.turma = turma;
     }
 
 
@@ -20,7 +24,16 @@ public class ProfessorDisciplina {
         return professor;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public Turma getTurma() {
+        return turma;
     }  
+
+    @Override
+    public String toString() {
+     return "ProfessorDisciplina{" +
+            "professor=" + professor +
+            ", turma=" + turma +
+            '}';
+    }
+
 }

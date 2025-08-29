@@ -1,24 +1,28 @@
 package br.com.gus.relacionamento;
 
 import br.com.gus.entidades.Aluno;
-import br.com.gus.entidades.Disciplina;
+import br.com.gus.entidades.Turma;
 
 
 public class AlunoDisciplina {
 
     private Aluno aluno;
-    private Disciplina disciplina;
+    private Turma turma;
 
-    public AlunoDisciplina(Aluno aluno, Disciplina disciplina) {
+    public AlunoDisciplina(Aluno aluno, Turma turma) {
+        if (aluno == null || turma == null) {
+            throw new IllegalArgumentException("Aluno e Turma não podem ser nulos");
+        }
+
         this.aluno = aluno;
-        this.disciplina = disciplina;
+        this.turma = turma;
     }
 
     public Aluno getAluno() {
         return aluno;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public Turma getTurma() {
+        return turma;
     }  
 }
