@@ -1,8 +1,6 @@
 package br.com.gus.controle;
 
-import java.time.LocalTime;
 import java.util.List;
-
 import br.com.gus.entidades.*;
 import br.com.gus.service.SistemaAcademico;
 
@@ -12,53 +10,47 @@ public class ControleAcademico {
 
         SistemaAcademico sistema = new SistemaAcademico();
 
-        // Professores
-        Professor p1 = new Professor("1", "Sabrina", "GT7U97");
-        Professor p2 = new Professor("2", "Isabella", "GT7U96");
+        Professor p1 = sistema.criarProfessor("1", "Sabrina", "GT7U97");
+        Professor p2 = sistema.criarProfessor("2", "Isabella", "GT7U96");
 
-        // Alunos
         Aluno[] alunos = {
-            new Aluno("1", "João", "GT7U99"),
-            new Aluno("2", "George", "GT7U98"),
-            new Aluno("3", "Davi", "GT7U96"),
-            new Aluno("4", "Gustavo", "GT7U94"),
-            new Aluno("5", "Victor", "GT7U97"),
-            new Aluno("6", "Arthur", "GT7U88"),
-            new Aluno("7", "Marcio", "GT7U91"),
-            new Aluno("8", "Valerio", "GT7U92"),
-            new Aluno("9", "Marcelo", "GT7U93"),
-            new Aluno("0", "Raiff", "GT7U90")
+            sistema.criarAluno("1", "João", "GT7U99"),
+            sistema.criarAluno("2", "George", "GT7U98"),
+            sistema.criarAluno("3", "Davi", "GT7U96"),
+            sistema.criarAluno("4", "Gustavo", "GT7U94"),
+            sistema.criarAluno("5", "Victor", "GT7U97"),
+            sistema.criarAluno("6", "Arthur", "GT7U88"),
+            sistema.criarAluno("7", "Marcio", "GT7U91"),
+            sistema.criarAluno("8", "Valerio", "GT7U92"),
+            sistema.criarAluno("9", "Marcelo", "GT7U93"),
+            sistema.criarAluno("0", "Raiff", "GT7U90")
         };
 
-        // Horários
-        Horario h1 = new Horario("Segunda-feira", LocalTime.of(9, 0), LocalTime.of(11, 0));
-        Horario h2 = new Horario("Terça-feira", LocalTime.of(14, 0), LocalTime.of(16, 0));
-        Horario h3 = new Horario("Quarta-feira", LocalTime.of(10, 0), LocalTime.of(12, 0));
-        Horario h4 = new Horario("Quinta-feira", LocalTime.of(19, 0), LocalTime.of(21, 0));
-        Horario h5 = new Horario("Sexta-feira", LocalTime.of(8, 0), LocalTime.of(10, 0));
+        Horario h1 = sistema.criarHorario("Segunda-feira", 9, 0, 11, 0);
+        Horario h2 = sistema.criarHorario("Terça-feira", 14, 0, 16, 0);
+        Horario h3 = sistema.criarHorario("Quarta-feira", 10, 0, 12, 0);
+        Horario h4 = sistema.criarHorario("Quinta-feira", 19, 0, 21, 0);
+        Horario h5 = sistema.criarHorario("Sexta-feira", 8, 0, 10, 0);
 
-        // Disciplinas
-        Disciplina d1 = new Disciplina("023087", "Map");
-        Disciplina d2 = new Disciplina("024098", "Eletiva");
-        Disciplina d3 = new Disciplina("023701", "Gerencia");
-        Disciplina d4 = new Disciplina("034870", "APS");
-        Disciplina d5 = new Disciplina("085632", "Engenharia de Software");
-
-        // Turmas
+        Disciplina d1 = sistema.criarDisciplina("023087", "Map");
+        Disciplina d2 = sistema.criarDisciplina("024098", "Eletiva");
+        Disciplina d3 = sistema.criarDisciplina("023701", "Gerencia");
+        Disciplina d4 = sistema.criarDisciplina("034870", "APS");
+        Disciplina d5 = sistema.criarDisciplina("085632", "Engenharia de Software");
+       
         Turma t1 = sistema.criarTurma(d1, p1, h1);
         Turma t2 = sistema.criarTurma(d2, p1, h5);
         Turma t3 = sistema.criarTurma(d3, p2, h4);
         Turma t4 = sistema.criarTurma(d4, p2, h3);
         Turma t5 = sistema.criarTurma(d5, p2, h2);
 
-        // Matrículas
-        sistema.matricularAluno(t1, alunos[0]); // João
-        sistema.matricularAluno(t1, alunos[4]); // Victor
-        sistema.matricularAluno(t1, alunos[9]); // Raiff
-        sistema.matricularAluno(t2, alunos[1]); // George
-        sistema.matricularAluno(t3, alunos[2]); // Davi
-        sistema.matricularAluno(t4, alunos[3]); // Gustavo
-        sistema.matricularAluno(t5, alunos[5]); // Arthur
+        sistema.matricularAluno(t1, alunos[0]); 
+        sistema.matricularAluno(t1, alunos[4]); 
+        sistema.matricularAluno(t1, alunos[9]); 
+        sistema.matricularAluno(t2, alunos[1]); 
+        sistema.matricularAluno(t3, alunos[2]); 
+        sistema.matricularAluno(t4, alunos[3]); 
+        sistema.matricularAluno(t5, alunos[5]); 
 
         System.out.println("Disciplinas da professora " + p1.getNome() + ":");
         exibirTurmas(sistema.buscarTurmasDoProfessor(p1));
@@ -88,6 +80,4 @@ public class ControleAcademico {
             System.out.println("- " + aluno.getNome());
         }
     }
-
-
 }

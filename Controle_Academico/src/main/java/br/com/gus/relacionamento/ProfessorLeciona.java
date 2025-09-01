@@ -3,14 +3,12 @@ package br.com.gus.relacionamento;
 import br.com.gus.entidades.Professor;
 import br.com.gus.entidades.Turma;
 
-public class ProfessorDisciplina {
+public class ProfessorLeciona {
 
     private Professor professor;
     private Turma turma;
     
-
-    
-    public ProfessorDisciplina(Professor professor, Turma turma) {
+    public ProfessorLeciona(Professor professor, Turma turma) {
         if (professor == null || turma == null) {
             throw new IllegalArgumentException("Professor e Turma não podem ser nulos");
         }

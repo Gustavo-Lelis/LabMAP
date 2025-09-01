@@ -6,7 +6,7 @@ import br.com.gus.entidades.Disciplina;
 import br.com.gus.entidades.Professor;
 import br.com.gus.entidades.Horario;
 
-import br.com.gus.relacionamento.AlunoDisciplina;
+import br.com.gus.relacionamento.AlunoCursa;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +35,7 @@ class AlunoDisciplinaTest {
     @Test
     void testConstrutorComParametrosValidos() {
         // Testa o construtor com parâmetros válidos
-        AlunoDisciplina alunoDisciplina = new AlunoDisciplina(aluno, turma);
+        AlunoCursa alunoDisciplina = new AlunoCursa(aluno, turma);
         
         assertNotNull(alunoDisciplina);
         assertEquals(aluno, alunoDisciplina.getAluno());
@@ -47,7 +47,7 @@ class AlunoDisciplinaTest {
         // Testa que exceção é lançada quando aluno é nulo
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new AlunoDisciplina(null, turma)
+            () -> new AlunoCursa(null, turma)
         );
         
         assertEquals("Aluno e Turma não podem ser nulos", exception.getMessage());
@@ -58,7 +58,7 @@ class AlunoDisciplinaTest {
         // Testa que exceção é lançada quando turma é nula
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new AlunoDisciplina(aluno, null)
+            () -> new AlunoCursa(aluno, null)
         );
         
         assertEquals("Aluno e Turma não podem ser nulos", exception.getMessage());
@@ -69,7 +69,7 @@ class AlunoDisciplinaTest {
         // Testa que exceção é lançada quando ambos são nulos
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new AlunoDisciplina(null, null)
+            () -> new AlunoCursa(null, null)
         );
         
         assertEquals("Aluno e Turma não podem ser nulos", exception.getMessage());
@@ -78,7 +78,7 @@ class AlunoDisciplinaTest {
     @Test
     void testGetAluno() {
         // Testa o método getAluno
-        AlunoDisciplina alunoDisciplina = new AlunoDisciplina(aluno, turma);
+        AlunoCursa alunoDisciplina = new AlunoCursa(aluno, turma);
         
         assertEquals(aluno, alunoDisciplina.getAluno());
         assertEquals("Maria Santos", alunoDisciplina.getAluno().getNome());
@@ -88,7 +88,7 @@ class AlunoDisciplinaTest {
     @Test
     void testGetTurma() {
         // Testa o método getTurma
-        AlunoDisciplina alunoDisciplina = new AlunoDisciplina(aluno, turma);
+        AlunoCursa alunoDisciplina = new AlunoCursa(aluno, turma);
         
         assertEquals(turma, alunoDisciplina.getTurma());
         assertEquals(disciplina, alunoDisciplina.getTurma().getDisciplina());
@@ -99,7 +99,7 @@ class AlunoDisciplinaTest {
     @Test
     void testIntegracaoComObjetosReais() {
         // Testa a integração com objetos reais e seus métodos
-        AlunoDisciplina alunoDisciplina = new AlunoDisciplina(aluno, turma);
+        AlunoCursa alunoDisciplina = new AlunoCursa(aluno, turma);
         
         // Verifica os dados do aluno
         assertEquals("Maria Santos", alunoDisciplina.getAluno().getNome());
@@ -117,8 +117,8 @@ class AlunoDisciplinaTest {
         // Testa criar múltiplas instâncias com alunos diferentes
         Aluno aluno2 = new Aluno("2","Pedro Oliveira", "A2023002");
         
-        AlunoDisciplina relacao1 = new AlunoDisciplina(aluno, turma);
-        AlunoDisciplina relacao2 = new AlunoDisciplina(aluno2, turma);
+        AlunoCursa relacao1 = new AlunoCursa(aluno, turma);
+        AlunoCursa relacao2 = new AlunoCursa(aluno2, turma);
         
         assertEquals("Maria Santos", relacao1.getAluno().getNome());
         assertEquals("Pedro Oliveira", relacao2.getAluno().getNome());
@@ -135,8 +135,8 @@ class AlunoDisciplinaTest {
         Horario horario2 = new Horario("Terça-feira", LocalTime.of(14, 0), LocalTime.of(16, 0));
         Turma turma2 = new Turma(disciplina2, professor2, horario2);
         
-        AlunoDisciplina relacao1 = new AlunoDisciplina(aluno, turma);
-        AlunoDisciplina relacao2 = new AlunoDisciplina(aluno, turma2);
+        AlunoCursa relacao1 = new AlunoCursa(aluno, turma);
+        AlunoCursa relacao2 = new AlunoCursa(aluno, turma2);
         
         // Mesmo aluno em turmas diferentes
         assertEquals(aluno, relacao1.getAluno());
@@ -150,7 +150,7 @@ class AlunoDisciplinaTest {
     @Test
     void testImutabilidadeDosObjetos() {
         // Testa que os objetos internos não são modificados após a criação
-        AlunoDisciplina alunoDisciplina = new AlunoDisciplina(aluno, turma);
+        AlunoCursa alunoDisciplina = new AlunoCursa(aluno, turma);
         
         // Os objetos retornados devem ser os mesmos que foram passados no construtor
         assertSame(aluno, alunoDisciplina.getAluno());

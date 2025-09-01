@@ -4,12 +4,12 @@ import br.com.gus.entidades.Aluno;
 import br.com.gus.entidades.Turma;
 
 
-public class AlunoDisciplina {
+public class AlunoCursa {
 
     private Aluno aluno;
     private Turma turma;
 
-    public AlunoDisciplina(Aluno aluno, Turma turma) {
+    public AlunoCursa(Aluno aluno, Turma turma) {
         if (aluno == null || turma == null) {
             throw new IllegalArgumentException("Aluno e Turma não podem ser nulos");
         }

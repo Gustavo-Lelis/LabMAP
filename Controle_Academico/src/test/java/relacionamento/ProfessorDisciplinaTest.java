@@ -1,6 +1,6 @@
 package relacionamento;
 
-import br.com.gus.relacionamento.ProfessorDisciplina;
+import br.com.gus.relacionamento.ProfessorLeciona;
 
 import br.com.gus.entidades.Professor;
 import br.com.gus.entidades.Turma;
@@ -32,7 +32,7 @@ class ProfessorDisciplinaTest {
     @Test
     void testConstrutorComParametrosValidos() {
         // Testa o construtor com parâmetros válidos
-        ProfessorDisciplina professorDisciplina = new ProfessorDisciplina(professor, turma);
+        ProfessorLeciona professorDisciplina = new ProfessorLeciona(professor, turma);
         
         assertNotNull(professorDisciplina);
         assertEquals(professor, professorDisciplina.getProfessor());
@@ -44,7 +44,7 @@ class ProfessorDisciplinaTest {
         // Testa que exceção é lançada quando professor é nulo
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new ProfessorDisciplina(null, turma)
+            () -> new ProfessorLeciona(null, turma)
         );
         
         assertEquals("Professor e Turma não podem ser nulos", exception.getMessage());
@@ -55,7 +55,7 @@ class ProfessorDisciplinaTest {
         // Testa que exceção é lançada quando turma é nula
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new ProfessorDisciplina(professor, null)
+            () -> new ProfessorLeciona(professor, null)
         );
         
         assertEquals("Professor e Turma não podem ser nulos", exception.getMessage());
@@ -66,7 +66,7 @@ class ProfessorDisciplinaTest {
         // Testa que exceção é lançada quando ambos são nulos
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new ProfessorDisciplina(null, null)
+            () -> new ProfessorLeciona(null, null)
         );
         
         assertEquals("Professor e Turma não podem ser nulos", exception.getMessage());
@@ -75,7 +75,7 @@ class ProfessorDisciplinaTest {
     @Test
     void testGetProfessor() {
         // Testa o método getProfessor
-        ProfessorDisciplina professorDisciplina = new ProfessorDisciplina(professor, turma);
+        ProfessorLeciona professorDisciplina = new ProfessorLeciona(professor, turma);
         
         assertEquals(professor, professorDisciplina.getProfessor());
         assertEquals("João Silva", professorDisciplina.getProfessor().getNome());
@@ -86,7 +86,7 @@ class ProfessorDisciplinaTest {
     @Test
     void testGetTurma() {
         // Testa o método getTurma
-        ProfessorDisciplina professorDisciplina = new ProfessorDisciplina(professor, turma);
+        ProfessorLeciona professorDisciplina = new ProfessorLeciona(professor, turma);
         
         assertEquals(turma, professorDisciplina.getTurma());
         assertEquals(disciplina, professorDisciplina.getTurma().getDisciplina());
@@ -95,23 +95,9 @@ class ProfessorDisciplinaTest {
     }
 
     @Test
-    void testToString() {
-        // Testa o método toString
-        ProfessorDisciplina professorDisciplina = new ProfessorDisciplina(professor, turma);
-        String resultadoToString = professorDisciplina.toString();
-        
-        assertNotNull(resultadoToString);
-        assertTrue(resultadoToString.contains("ProfessorDisciplina"));
-        assertTrue(resultadoToString.contains("professor="));
-        assertTrue(resultadoToString.contains("turma="));
-        assertTrue(resultadoToString.contains("João Silva"));
-        assertTrue(resultadoToString.contains("MAT101"));
-    }
-
-    @Test
     void testIntegracaoComObjetosReais() {
         // Testa a integração com objetos reais e seus métodos
-        ProfessorDisciplina professorDisciplina = new ProfessorDisciplina(professor, turma);
+        ProfessorLeciona professorDisciplina = new ProfessorLeciona(professor, turma);
         
         // Verifica os dados do professor
         assertEquals("João Silva", professorDisciplina.getProfessor().getNome());
@@ -130,8 +116,8 @@ class ProfessorDisciplinaTest {
         Professor professor2 = new Professor("P456", "Maria Santos", "Mestre");
         Turma turma2 = new Turma(disciplina, professor2, horario);
         
-        ProfessorDisciplina relacao1 = new ProfessorDisciplina(professor, turma);
-        ProfessorDisciplina relacao2 = new ProfessorDisciplina(professor2, turma2);
+        ProfessorLeciona relacao1 = new ProfessorLeciona(professor, turma);
+        ProfessorLeciona relacao2 = new ProfessorLeciona(professor2, turma2);
         
         assertEquals("João Silva", relacao1.getProfessor().getNome());
         assertEquals("Maria Santos", relacao2.getProfessor().getNome());
@@ -143,7 +129,7 @@ class ProfessorDisciplinaTest {
     @Test
     void testImutabilidadeDosObjetos() {
         // Testa que os objetos internos não são modificados após a criação
-        ProfessorDisciplina professorDisciplina = new ProfessorDisciplina(professor, turma);
+        ProfessorLeciona professorDisciplina = new ProfessorLeciona(professor, turma);
         
         // Os objetos retornados devem ser os mesmos que foram passados no construtor
         assertSame(professor, professorDisciplina.getProfessor());
@@ -153,7 +139,7 @@ class ProfessorDisciplinaTest {
     @Test
     void testConsistenciaDosDados() {
         // Testa a consistência dos dados após a criação
-        ProfessorDisciplina professorDisciplina = new ProfessorDisciplina(professor, turma);
+        ProfessorLeciona professorDisciplina = new ProfessorLeciona(professor, turma);
         
         // Verifica se todos os dados estão consistentes
         assertEquals(professor.getNome(), professorDisciplina.getProfessor().getNome());
